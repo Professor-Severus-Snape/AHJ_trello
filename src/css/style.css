@@ -6,5 +6,95 @@
 }
 
 body {
+  padding: 50px;
   background-color: #dedede;
+}
+
+button, div {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, input {
+  font-size: inherit;
+  color: inherit;
+  background-color: #fff;
+}
+
+button {
+  border: none;
+	cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 8px;
+  align-items: start;
+  max-width: 1200px; /* по макету - 832px */
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #107abb;
+}
+
+.column {
+  padding: 10px 8px;
+  border-radius: 5px;
+  background-color: #dee2e5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  padding-right: 5px;
+}
+
+.header__title {
+  text-transform: uppercase;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.menu__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #798c97;
+}
+
+.tasks {
+  margin-bottom: 15px;
+}
+
+.tasks__item {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px #abb5bd;
+}
+
+.tasks__item:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.column__button {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #798c97;
+  background-color: transparent;
 }

@@ -7,6 +7,71 @@
     <title>Task board</title>
   </head>
   <body>
-    <div class="container"></div>
+    <div class="container">
+
+      <!-- Первая колонка -->
+      <div class="column column_todo">
+        <header class="header">
+          <h3 class="header__title">TODO</h3>
+          <div class="header__menu menu">
+            <span class="menu__dot"></span>
+            <span class="menu__dot"></span>
+            <span class="menu__dot"></span>
+          </div>
+        </header>
+        <ul class="tasks">
+          <li class="tasks__item">Welcome to Trello!</li>
+          <li class="tasks__item">This is a card.</li>
+          <li class="tasks__item">Click on a card to see whats's behind it.</li>
+          <li class="tasks__item">You can attach pictures and files...</li>
+          <li class="tasks__item">... any kind of hyperlink ...</li>
+          <li class="tasks__item">... or checklists.</li>
+        </ul>
+        <button class="column__button" type="button">+ Add another card</button>
+      </div>
+
+      <!-- Вторая колонка -->
+      <div class="column column_progress">
+        <header class="header">
+          <h3 class="header__title">IN PROGRESS</h3>
+          <div class="header__menu menu">
+            <span class="menu__dot"></span>
+            <span class="menu__dot"></span>
+            <span class="menu__dot"></span>
+          </div>
+        </header>
+        <ul class="tasks">
+          <li class="tasks__item">Invite your team to this board using the Add Members button</li>
+          <li class="tasks__item">Drag people onto a card to indicate that they're responsible for it.</li>
+          <li class="tasks__item">Use color-coded labels for organization.</li>
+          <li class="tasks__item">Make as many lists as you need!</li>
+          <li class="tasks__item">Try dragging cards anywhere.</li>
+          <li class="tasks__item">Finished with a card? Archive it.</li>
+        </ul>
+        <button class="column__button" type="button">+ Add another card</button>
+      </div>
+
+      <!-- Третья колонка -->
+      <div class="column column_done">
+        <header class="header">
+          <h3 class="header__title">DONE</h3>
+          <div class="header__menu menu">
+            <span class="menu__dot"></span>
+            <span class="menu__dot"></span>
+            <span class="menu__dot"></span>
+          </div>
+        </header>
+        <ul class="tasks">
+          <li class="tasks__item">To learn more tricks, check out the guide.</li>
+          <li class="tasks__item">Use as many boards as you want. We'll make more!</li>
+          <li class="tasks__item">Want to use keyboard shortcuts? We have them!</li>
+          <li class="tasks__item">Want updates on new features?</li>
+          <li class="tasks__item">Need help?</li>
+          <li class="tasks__item">Want current tips, usage examples, or API info?</li>
+        </ul>
+        <button class="column__button" type="button">+ Add another card</button>
+      </div>
+      
+    </div>
   </body>
 </html>
