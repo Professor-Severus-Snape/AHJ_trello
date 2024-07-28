@@ -1,11 +1,13 @@
 import './form.css';
 
+import Card from '../card/Card';
+
 // <form class="form hidden">
 //   <label class="visually-hidden" for="add-card">Enter a title for this card</label>
 //   <textarea class="form__textarea" id="add-card" placeholder="Enter a title..."></textarea>
 //   <div class="form__footer">
 //     <div class="form__buttons">
-//       <button class="form__add" type="button">Add Card</button>
+//       <button class="form__add" type="submit">Add Card</button>
 //       <div class="form__close"></div>
 //     </div>
 //     <div class="menu">
@@ -38,7 +40,7 @@ export default class Form {
 
     this.addBtn = document.createElement('button');
     this.addBtn.classList.add('form__add');
-    this.addBtn.type = 'button';
+    this.addBtn.type = 'submit';
     this.addBtn.textContent = 'Add Card';
 
     this.closeBtn = document.createElement('div');
@@ -58,6 +60,13 @@ export default class Form {
     this.footer.append(this.buttons, this.menu);
 
     this.element.append(this.label, this.textarea, this.footer);
+
+    this.addListeners();
+  }
+
+  addListeners() {
+    this.closeBtn.addEventListener('click', this.onCloseForm.bind(this));
+    this.element.addEventListener('submit', this.onSubmitForm.bind(this));
   }
 
   render(previousSelector) {
@@ -65,11 +74,42 @@ export default class Form {
     previousElement.after(this.element);
   }
 
-  show() {
+  showForm() {
     this.element.classList.remove('hidden');
   }
 
-  hide() {
+  hideForm() {
     this.element.classList.add('hidden');
+  }
+
+  closeForm() {
+    this.textarea.value = '';
+    this.hideForm();
+    const btn = this.element.nextElementSibling;
+    btn.classList.remove('hidden');
+  }
+
+  onCloseForm() {
+    this.closeForm();
+  }
+
+  onSubmitForm(event) {
+    event.preventDefault();
+
+    const message = this.textarea.value.trim();
+
+    if (!message) {
+      this.textarea.value = '';
+      return;
+    }
+
+    // TODO: if (message уже есть в localStorage), то показать tooltip и выйти через return
+
+    const card = new Card(message);
+    const col = this.element.closest('.column');
+    card.addCard(`.${col.classList[1]} .cards`);
+    // TODO: добавить данные карточки в localStorage
+
+    this.closeForm();
   }
 }

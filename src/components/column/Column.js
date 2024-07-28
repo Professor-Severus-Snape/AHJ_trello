@@ -54,6 +54,12 @@ export default class Column {
     this.button.textContent = '+ Add another card';
 
     this.element.append(this.header, this.header, this.list, this.button);
+
+    this.addListeners();
+  }
+
+  addListeners() {
+    this.button.addEventListener('click', this.onOpenForm.bind(this));
   }
 
   render(parentSelector, titleText, classModifier) {
@@ -70,5 +76,10 @@ export default class Column {
 
     this.form = new Form();
     this.form.render(`.${classModifier} .cards`);
+  }
+
+  onOpenForm() {
+    this.button.classList.add('hidden');
+    this.form.showForm();
   }
 }
