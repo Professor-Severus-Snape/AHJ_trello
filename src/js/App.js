@@ -1,6 +1,7 @@
 import Column from '../components/column/Column';
 import Copyrights from '../components/copyrights/Copyrights';
 import Form from '../components/form/Form';
+import DragController from './DragController';
 
 export default class App {
   constructor() {
@@ -18,6 +19,7 @@ export default class App {
   init() {
     this.render();
     this.copyrights.checkRights();
+    this.dragController = new DragController();
   }
 
   render() {
