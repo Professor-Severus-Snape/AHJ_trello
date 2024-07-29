@@ -5620,11 +5620,15 @@ var DragController = /*#__PURE__*/function () {
         return;
       }
 
-      // 3. если список изначально пустой, то добавляем клон:
+      // 3. если список был пустой или содержал только текущую карточку, то добавляем клон в <ul>:
       var currentColumn = belowElement.closest('.column');
       if (currentColumn) {
         var currentUL = currentColumn.querySelector('.cards');
         if (!currentUL.children.length) {
+          currentUL.append(this.clone);
+          return;
+        }
+        if (currentUL.children.length === 1) {
           currentUL.append(this.clone);
           return;
         }
@@ -5680,7 +5684,7 @@ var es_set = __webpack_require__(1415);
 var web_dom_collections_for_each = __webpack_require__(3500);
 ;// CONCATENATED MODULE: ./src/js/allCards.js
 var allCards = {
-  todo: ['Welcome to Trello!', 'This is a card.', 'Click on a card to see whats\'s behind it.', 'You can attach pictures and files...', '... any kind of hyperlink ...', '... or checklists.'],
+  todo: ['Welcome to Trello!', 'This is a card.', 'Click on a card to see what\'s behind it.', 'You can attach pictures and files...', '... any kind of hyperlink ...', '... or checklists.'],
   progress: ['Invite your team to this board using the Add Members button.', 'Drag people onto a card to indicate that they\'re responsible for it.', 'Use color-coded labels for organization.', 'Make as many lists as you need!', 'Try dragging cards anywhere.', 'Finished with a card? Archive it.'],
   done: ['To learn more tricks, check out the guide.', 'Use as many boards as you want. We\'ll make more!', 'Want to use keyboard shortcuts? We have them!', 'Want updates on new features?', 'Need help?', 'Want current tips, usage examples, or API info?']
 };
