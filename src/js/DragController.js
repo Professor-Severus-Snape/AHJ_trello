@@ -68,13 +68,18 @@ export default class DragController {
       return;
     }
 
-    // 3. если список изначально пустой, то добавляем клон:
+    // 3. если список был пустой или содержал только текущую карточку, то добавляем клон в <ul>:
     const currentColumn = belowElement.closest('.column');
 
     if (currentColumn) {
       const currentUL = currentColumn.querySelector('.cards');
 
       if (!currentUL.children.length) {
+        currentUL.append(this.clone);
+        return;
+      }
+
+      if (currentUL.children.length === 1) {
         currentUL.append(this.clone);
         return;
       }

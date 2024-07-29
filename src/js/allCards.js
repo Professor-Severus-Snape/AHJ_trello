@@ -2,7 +2,7 @@ const allCards = {
   todo: [
     'Welcome to Trello!',
     'This is a card.',
-    'Click on a card to see whats\'s behind it.',
+    'Click on a card to see what\'s behind it.',
     'You can attach pictures and files...',
     '... any kind of hyperlink ...',
     '... or checklists.',
