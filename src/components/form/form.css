@@ -10,6 +10,12 @@
   box-shadow: 0px 2px #abb5bd;
 }
 
+.tooltip {
+  position: relative;
+  top: -5px;
+  color: #ff0000;
+}
+
 .form__footer {
   display: flex;
   justify-content: space-between;

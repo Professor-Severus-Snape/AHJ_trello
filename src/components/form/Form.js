@@ -5,6 +5,7 @@ import Card from '../card/Card';
 // <form class="form hidden">
 //   <label class="visually-hidden" for="add-card">Enter a title for this card</label>
 //   <textarea class="form__textarea" id="add-card" placeholder="Enter a title..."></textarea>
+//   <div class="tooltip hidden">Заметка уже есть!</div>
 //   <div class="form__footer">
 //     <div class="form__buttons">
 //       <button class="form__add" type="submit">Add Card</button>
@@ -31,6 +32,9 @@ export default class Form {
     this.textarea.classList.add('form__textarea');
     this.textarea.id = 'add-card';
     this.textarea.placeholder = 'Enter a title for this card...';
+
+    this.tooltip = document.createElement('div');
+    this.tooltip.classList.add('tooltip', 'hidden');
 
     this.footer = document.createElement('div');
     this.footer.classList.add('form__footer');
@@ -59,7 +63,7 @@ export default class Form {
 
     this.footer.append(this.buttons, this.menu);
 
-    this.element.append(this.label, this.textarea, this.footer);
+    this.element.append(this.label, this.textarea, this.tooltip, this.footer);
 
     this.addListeners();
   }
@@ -67,11 +71,20 @@ export default class Form {
   addListeners() {
     this.closeBtn.addEventListener('click', this.onCloseForm.bind(this));
     this.element.addEventListener('submit', this.onSubmitForm.bind(this));
+    this.textarea.addEventListener('input', this.onInput.bind(this));
   }
 
   render(previousSelector) {
     const previousElement = document.querySelector(previousSelector);
     previousElement.after(this.element);
+  }
+
+  showTooltip() {
+    this.tooltip.classList.remove('hidden');
+  }
+
+  hideTooltip() {
+    this.tooltip.classList.add('hidden');
   }
 
   showForm() {
@@ -87,6 +100,7 @@ export default class Form {
     this.hideForm();
     const btn = this.element.nextElementSibling;
     btn.classList.remove('hidden');
+    this.hideTooltip();
   }
 
   onCloseForm() {
@@ -100,6 +114,8 @@ export default class Form {
 
     if (!message) {
       this.textarea.value = '';
+      this.tooltip.textContent = 'Введите текст!';
+      this.showTooltip();
       return;
     }
 
@@ -107,7 +123,8 @@ export default class Form {
     const flag = cardList.some((card) => (card.textContent === message));
 
     if (flag) {
-      console.log('Такая карточка уже существует!'); // NOTE: показать tooltip, потом скрыть
+      this.tooltip.textContent = 'Заметка уже есть!';
+      this.showTooltip();
     } else {
       const card = new Card(message);
       const column = this.element.closest('.column');
@@ -115,5 +132,9 @@ export default class Form {
       card.addCard(`[data-title="${attribute}"] .cards`);
       this.closeForm();
     }
+  }
+
+  onInput() {
+    this.hideTooltip();
   }
 }
