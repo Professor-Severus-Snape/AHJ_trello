@@ -57,10 +57,8 @@ export default class DragController {
     event.preventDefault(); // чтобы не выделялся текст
 
     // 1. определяем положение перемещаемой карточки:
-    const topPosition = `${event.pageY - this.mouseY}px`;
-    const leftPosition = `${event.pageX - this.mouseX}px`;
-    this.grabbedCard.style.top = topPosition;
-    this.grabbedCard.style.left = leftPosition;
+    this.grabbedCard.style.top = `${event.pageY - this.mouseY}px`;
+    this.grabbedCard.style.left = `${event.pageX - this.mouseX}px`;
 
     // 2. определяем элемент, над которым находимся в данный момент:
     const belowElement = document.elementFromPoint(event.pageX, event.pageY);

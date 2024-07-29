@@ -103,12 +103,17 @@ export default class Form {
       return;
     }
 
-    // TODO: if (message уже есть в localStorage), то показать tooltip и выйти через return
+    const cardList = [...document.querySelectorAll('.cards__item')];
+    const flag = cardList.some((card) => (card.textContent === message));
 
-    const card = new Card(message);
-    const col = this.element.closest('.column');
-    card.addCard(`.${col.classList[1]} .cards`);
-
-    this.closeForm();
+    if (flag) {
+      console.log('Такая карточка уже существует!'); // NOTE: показать tooltip, потом скрыть
+    } else {
+      const card = new Card(message);
+      const column = this.element.closest('.column');
+      const attribute = column.dataset.title;
+      card.addCard(`[data-title="${attribute}"] .cards`);
+      this.closeForm();
+    }
   }
 }
