@@ -108,7 +108,6 @@ export default class Form {
     const card = new Card(message);
     const col = this.element.closest('.column');
     card.addCard(`.${col.classList[1]} .cards`);
-    // TODO: добавить данные карточки в localStorage
 
     this.closeForm();
   }

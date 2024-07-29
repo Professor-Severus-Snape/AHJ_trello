@@ -2,6 +2,7 @@ import Column from '../components/column/Column';
 import Copyrights from '../components/copyrights/Copyrights';
 import Form from '../components/form/Form';
 import DragController from './DragController';
+import Storage from './Storage';
 
 export default class App {
   constructor() {
@@ -14,6 +15,8 @@ export default class App {
     this.copyrights = new Copyrights();
 
     this.form = new Form();
+
+    this.storage = new Storage();
   }
 
   init() {
@@ -25,9 +28,11 @@ export default class App {
   render() {
     this.createTrelloContainer();
 
-    this.columnToDo.render('.container', 'TODO', 'todo');
-    this.columnInProgress.render('.container', 'IN PROGRESS', 'progress');
-    this.columnDone.render('.container', 'DONE', 'done');
+    const data = this.storage.formData;
+
+    this.columnToDo.render(data, '.container', 'TODO', 'todo');
+    this.columnInProgress.render(data, '.container', 'IN PROGRESS', 'progress');
+    this.columnDone.render(data, '.container', 'DONE', 'done');
 
     this.copyrights.render('.wrapper');
   }

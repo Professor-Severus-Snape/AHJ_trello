@@ -1,6 +1,5 @@
 import './column.css';
 
-import allCards from '../../js/allCards';
 import Card from '../card/Card';
 import Form from '../form/Form';
 
@@ -62,13 +61,13 @@ export default class Column {
     this.button.addEventListener('click', this.onOpenForm.bind(this));
   }
 
-  render(parentSelector, titleText, classModifier) {
+  render(data, parentSelector, titleText, classModifier) {
     this.element.classList.add(classModifier);
     this.title.textContent = titleText;
     this.parentElement = document.querySelector(parentSelector);
     this.parentElement.append(this.element);
 
-    const messages = allCards[classModifier];
+    const messages = data[classModifier];
     for (let i = 0; i < messages.length; i += 1) {
       const card = new Card(messages[i]);
       card.addCard(`.${classModifier} .cards`);

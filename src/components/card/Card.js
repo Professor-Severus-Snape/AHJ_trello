@@ -40,7 +40,6 @@ export default class Card {
   addCard(parentSelector) {
     const parentElement = document.querySelector(parentSelector);
     parentElement.append(this.element);
-    // TODO: добавить данные карточки в localStorage
   }
 
   onMouseEnter() {
@@ -54,6 +53,5 @@ export default class Card {
   onRemoveBtnClick() {
     this.removeListeners();
     this.element.remove();
-    // TODO: удалить данные карточки из localStorage
   }
 }

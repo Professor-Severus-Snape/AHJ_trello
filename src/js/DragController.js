@@ -99,9 +99,6 @@ export default class DragController {
   onMouseUp() {
     // определяем конечное положение карточки:
     this.clone.before(this.grabbedCard);
-    
-    // TODO: изменить данные карточки в localStorage
-
     this.clearController();
   }
 
