@@ -1,5 +1,7 @@
 # Домашнее задание к занятию "6. Работа с файлами, DnD"
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0dae6q8fa3qe2so9?svg=true)](https://ci.appveyor.com/project/Professor-Severus-Snape/ahj-trello)
+
 Правила сдачи задания:
 
 1. В рамках этого ДЗ можно использовать любой менеджер пакетов.
