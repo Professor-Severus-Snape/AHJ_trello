@@ -26,14 +26,12 @@ export default class App {
   }
 
   render() {
-    this.wrapper.append(this.container.element);
+    this.wrapper.append(this.container.element, this.copyrights.element);
 
     const data = this.storage.formData;
 
     this.columnTodo.render('.container', data);
     this.columnProgress.render('.container', data);
     this.columnDone.render('.container', data);
-
-    this.copyrights.render('.wrapper');
   }
 }

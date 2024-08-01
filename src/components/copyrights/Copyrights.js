@@ -16,11 +16,6 @@ export default class Copyrights {
     this.element.append(this.link);
   }
 
-  render(parentSelector) {
-    const parentElement = document.querySelector(parentSelector);
-    parentElement.append(this.element);
-  }
-
   checkRights() {
     if (this.element.textContent !== '© Professor-Severus-Snape, 2024') {
       // eslint-disable-next-line no-console
