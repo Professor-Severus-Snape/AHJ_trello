@@ -5477,6 +5477,30 @@ var Column = /*#__PURE__*/function () {
   }]);
 }();
 
+;// CONCATENATED MODULE: ./src/components/container/Container.js
+
+
+
+
+
+
+
+
+
+
+function Container_typeof(o) { "@babel/helpers - typeof"; return Container_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Container_typeof(o); }
+function Container_defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, Container_toPropertyKey(o.key), o); } }
+function Container_createClass(e, r, t) { return r && Container_defineProperties(e.prototype, r), t && Container_defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function Container_toPropertyKey(t) { var i = Container_toPrimitive(t, "string"); return "symbol" == Container_typeof(i) ? i : i + ""; }
+function Container_toPrimitive(t, r) { if ("object" != Container_typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != Container_typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function Container_classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+
+var Container = /*#__PURE__*/Container_createClass(function Container() {
+  Container_classCallCheck(this, Container);
+  this.element = document.createElement('div');
+  this.element.classList.add('container');
+});
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.link.js
 var es_string_link = __webpack_require__(778);
 ;// CONCATENATED MODULE: ./src/components/copyrights/Copyrights.js
@@ -5514,12 +5538,6 @@ var Copyrights = /*#__PURE__*/function () {
     this.element.append(this.link);
   }
   return Copyrights_createClass(Copyrights, [{
-    key: "render",
-    value: function render(parentSelector) {
-      var parentElement = document.querySelector(parentSelector);
-      parentElement.append(this.element);
-    }
-  }, {
     key: "checkRights",
     value: function checkRights() {
       if (this.element.textContent !== '© Professor-Severus-Snape, 2024') {
@@ -5530,7 +5548,7 @@ var Copyrights = /*#__PURE__*/function () {
   }]);
 }();
 
-;// CONCATENATED MODULE: ./src/js/DragController.js
+;// CONCATENATED MODULE: ./src/libs/DragController.js
 
 
 
@@ -5689,7 +5707,7 @@ var allCards = {
   done: ['To learn more tricks, check out the guide.', 'Use as many boards as you want. We\'ll make more!', 'Want to use keyboard shortcuts? We have them!', 'Want updates on new features?', 'Need help?', 'Want current tips, usage examples, or API info?']
 };
 /* harmony default export */ const js_allCards = (allCards);
-;// CONCATENATED MODULE: ./src/js/Storage.js
+;// CONCATENATED MODULE: ./src/libs/Storage.js
 function Storage_typeof(o) { "@babel/helpers - typeof"; return Storage_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, Storage_typeof(o); }
 
 
@@ -5778,14 +5796,17 @@ function App_toPrimitive(t, r) { if ("object" != App_typeof(t) || !t) return t; 
 
 
 
+
 var App = /*#__PURE__*/function () {
   function App() {
     App_classCallCheck(this, App);
     this.wrapper = document.querySelector('.wrapper');
+    this.container = new Container();
     this.columnTodo = new Column('todo', 'todo');
     this.columnProgress = new Column('in progress', 'progress');
     this.columnDone = new Column('done', 'done');
     this.copyrights = new Copyrights();
+    this.dragController = new DragController();
     this.storage = new Storage();
   }
   return App_createClass(App, [{
@@ -5793,24 +5814,15 @@ var App = /*#__PURE__*/function () {
     value: function init() {
       this.render();
       this.copyrights.checkRights();
-      this.dragController = new DragController();
     }
   }, {
     key: "render",
     value: function render() {
-      this.createTrelloContainer();
+      this.wrapper.append(this.container.element, this.copyrights.element);
       var data = this.storage.formData;
       this.columnTodo.render('.container', data);
       this.columnProgress.render('.container', data);
       this.columnDone.render('.container', data);
-      this.copyrights.render('.wrapper');
-    }
-  }, {
-    key: "createTrelloContainer",
-    value: function createTrelloContainer() {
-      this.container = document.createElement('div');
-      this.container.classList.add('container');
-      this.wrapper.append(this.container);
     }
   }]);
 }();
