@@ -1,4 +1,4 @@
-import allCards from './allCards';
+import allCards from '../js/allCards';
 
 export default class Storage {
   constructor() {

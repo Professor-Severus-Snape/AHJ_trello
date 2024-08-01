@@ -44,16 +44,6 @@ ul {
   margin: 0 auto;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 8px;
-  align-items: start;
-  padding: 10px;
-  min-height: 600px;
-  background-color: #107abb;
-}
-
 .hidden {
   display: none;
 }
